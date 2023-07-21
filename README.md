@@ -21,3 +21,57 @@ Frontend and Backend Communications: The frontend communicates with the backend 
 
 ## Getting Started
 
+1. Clone the repository
+
+        git clone git@github.com:Acaldemone/z-prefix-project.git     or use the link https://github.com/Acaldemone/z-prefix-project
+
+2. cd in the appropriate folder in your terminal after cloning
+
+3. Install dependancies
+
+        npm install (may need to be installed in the front end and backend seperatly)
+
+4. install database
+
+        Have docker installed and open up a fresh ubuntu terminal and run the following commands:
+
+docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 \
+-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres
+
+         This pulls the Postgres image from the cloud and creates a container with necassary ports, password and name.
+
+docker ps -a
+
+        This lists the active container that are running.
+
+docker exec -it <PSQL-Container-ID> bash
+
+        Replace <PSQL-Container-ID> with the first 3 characters of the container ID. This will put you in the container root on the terminal.
+
+psql -U postgres
+
+        This will log you into Postgres as the postgres user
+
+CREATE DATABASE inventory;
+
+    This will create an empty database in the postgres container
+
+/c inventory
+
+    This will connect you to that Database
+
+5. Migrate and seed knex data
+
+RUN npx knex migrate:latest 
+
+RUN npx knex seed:run
+
+    The combination of these two commands will migrate the appropriate data tables and initial seed files.
+
+6. Start server and React App
+
+    RUN   npm start   in both BACKEND and FRONTEND folders
+
+## Directions
+
+Upon entering the application, you will be taken to the inventory landing page that will be populated with some input fields for adding items. Below that should be some items that were populated with the seed data. These items and the ones add here on can be edited with the labeled button and deleted with the delete button. Their is a create account button that allows users to create accounts and a login button that goes to the login screen. Once logged in, you will be transported to the users personal page but adding items here currently does not work. When this page is navigated away from, you must relog back in to go back to it. 
