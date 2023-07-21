@@ -1,0 +1,83 @@
+
+body, h1, h2, p, ul, li, form, input, button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .inventoryPageContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+ 
+  .App-header {
+    text-align: center;
+  }
+  
+ 
+  .inventoryPageContainer a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+ 
+  .inventoryPageContainer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .inventoryPageContainer label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .inventoryPageContainer input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .inventoryPageContainer button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .inventoryPageContainer button:hover {
+    background-color: #0056b3;
+  }
+  
+  .inventoryPageContainer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .inventoryPageContainer li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .inventoryPageContainer li p {
+    margin: 5px 0;
+  }
+  
+
+  @media (max-width: 600px) {
+    .inventoryPageContainer form {
+      max-width: 300px;
+    }
+  }

@@ -1,50 +1,29 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import {useState, createContext, useContext, } from 'react';
 import Login from './components/login page/login';
 import CreateAccount from './components/CreateAccount./createAccount';
-import { Route,Routes } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
+import InventoyPage from './components/InventoryPage/InventoryPage';
+import UserPage from './components/UsersPage/UsersPage';
 
+export const UserContext = createContext();
 
 function App() {
-  const [UserId, setUserId] = useState()
+  const [user_id, setUserId] = useState(null);
+  console.log(user_id)
   return (
-    <div className="bg-blue-50">
+    <div className='app'>
+      <h1>Inventory Database</h1>
+      <UserContext.Provider value={{ user_id, setUserId }}>
       <Routes>
-        <Route path='/' element={<UserLogin setUserId={setUserId} />} />
-        <Route path='/login/createAccount' element={<CreateAccountPage />} />
-        <Route path='/users/userAccount/:id/*' element={<UserPage userId={UserId} />} />
+        <Route path='/' element={<InventoyPage />} />
+        <Route path='/Login' element={<Login setUserId={setUserId} />} />
+        <Route path='/login/createAccount' element={<CreateAccount />} />
+        <Route path='/users/:id' element={<UserPage user_id={user_id} />} />
       </Routes>
+      </UserContext.Provider>
     </div>
   );
-  return 
 }
-
-
-// function App() {
-//   const [items, setItems] = useState([])
-//   useEffect(()=> {
-//     fetch(`http://localhost:8080/items`)
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log(data)
-//       setItems(data)
-//   })
-//   .catch(error => {
-//     console.log(error)
-//   })
-// },[])
-
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <ul>
-//           {items.map((item, index) => (
-//             <li>{item.item_name}</li>
-//           ))}
-//         </ul>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
